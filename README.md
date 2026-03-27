@@ -1,95 +1,27 @@
-# Student Performance Analysis using Multiple Linear Regression
+# Student Performance Multiple Linear Regression
 
 ## Project Overview
 
-This project implements a multiple linear regression analysis to predict and analyze student performance based on various factors. The implementation includes a custom Multiple Linear Regression class built from scratch, along with comprehensive statistical analysis and visualization tools.
+This project analyzes and predicts student performance using a custom-built multiple linear regression model implemented entirely from scratch in Python. Utilizing a dataset of 10,000 student records, the goal was to identify the key academic drivers of performance and quantify their impact without relying on pre-built machine learning libraries for the core algorithm. The project encompasses full exploratory data analysis, mathematical implementation of regression via the normal equation, and comprehensive statistical significance testing to validate the model's predictive power.
 
-## Features
+## Key Technical Steps
 
-- Custom Multiple Linear Regression implementation
-- Comprehensive statistical analysis (ANOVA, F-tests)
-- 3D visualization of regression planes
-- Performance metrics calculation
-- Data preprocessing and exploration tools
-
-## Project Structure
-
-```plaintext
-├── Student_Performance_Analysis.ipynb  # Main analysis notebook
-├── Student_Performance.csv            # Dataset
-└── README.md                         # Project documentation
-```
-
-## Implementation Details
-
-### 1. Data Preparation & Exploration
-
-- Data cleaning and preprocessing
-- Feature correlation analysis
-- Exploratory data visualization
-
-### 2. Custom MLR Implementation
-
-The `MultipleLinearRegression` class includes:
-
-- Normal equation for coefficient calculation
-- Statistical measures (R², MSE, F-statistic)
-- 3D visualization capabilities
-- ANOVA table generation
-- Hypothesis testing
-
-### 3. Model Features
-
-Selected features based on correlation analysis:
-
-- Previous Scores
-- Hours Studied
-
-Target variable:
-
-- Performance Index
-
-### 4. Statistical Analysis
-
-- ANOVA (Analysis of Variance)
-- F-test for model significance
-- R-squared and adjusted R-squared
-- Mean Squared Error (MSE)
-- Mean Absolute Error (MAE)
-
-## Requirements
-
-- Python 3.x
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- SciPy
-
-## Usage
-
-1. Open the Jupyter notebook `Student_Performance_Analysis.ipynb`
-2. Ensure the dataset `Student_Performance.csv` is in the same directory
-3. Run the cells sequentially to:
-   - Load and preprocess the data
-   - Train the multiple linear regression model
-   - Visualize results
-   - Perform statistical analysis
+- **Data Cleaning & Preprocessing:** Processed 10,000 records by identifying and removing 127 duplicate entries, and converted categorical variables like 'Extracurricular Activities' into numeric binary features for analysis.
+- **Exploratory Data Analysis (EDA):** Generated a correlation matrix heatmap using `seaborn` to quantify relationships between variables, identifying "Previous Scores" and "Hours Studied" as the most highly correlated features with the target variable.
+- **Algorithm Engineering:** Developed an object-oriented `MultipleLinearRegression` class from scratch using `numpy` matrix operations to solve the normal equation ($\beta = (X^T X)^{-1} X^T y$), completely bypassing standard modeling libraries.
+- **Statistical Analysis:** Engineered custom functions to calculate and generate an ANOVA (Analysis of Variance) table, deriving SSR, SSE, Mean Squared Error (MSE), F-statistics, and p-values to rigorously test the null hypothesis.
+- **3D Visualization:** Created interactive 3D surface plots using `matplotlib` to visually demonstrate how the regression plane fits the multidimensional relationship between the two independent variables and the predicted performance index.
 
 ## Results
 
-The analysis provides:
+- Built a highly accurate predictive model achieving an **$R^2$ of 0.9850**, explaining 98.5% of the variance in student performance.
+- Evaluated model error on a 20% holdout test set, yielding a **Mean Squared Error (MSE) of 5.57** and a **Mean Absolute Error (MAE) of 1.88** on the performance index scale.
+- Confirmed the statistical significance of the model through rigorous F-testing, yielding a p-value strictly below the 0.05 alpha threshold, decisively rejecting the null hypothesis.
 
-- Prediction accuracy metrics
-- Statistical significance tests
-- Visual representation of the regression model
-- Correlation analysis between variables
+## Technologies Used
 
-## Model Evaluation
-
-Performance metrics include:
-
-- R-squared (R²) for model fit
-- Mean Squared Error (MSE)
-- Mean Absolute Error (MAE)
-- F-statistics and p-values
+- **Language:** Python 3.x
+- **Data Manipulation:** `pandas`, `numpy`
+- **Statistical Testing:** `scipy.stats`
+- **Visualization:** `matplotlib`, `seaborn`
+- **Evaluation:** `scikit-learn` (for train/test splitting and benchmark metric validation)
